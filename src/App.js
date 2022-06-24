@@ -12,6 +12,10 @@ function App() {
     setToDos((currentArray) => [toDo, ...currentArray])
     setToDo("")
   }
+  const onDelete =(event) =>{
+    console.log(event.target.value)
+    setToDos((currentArray) => [...currentArray].splice(event.target.value,1))
+  }
   console.log(toDos)
   return (
 
@@ -23,7 +27,7 @@ function App() {
       </form>
       <hr />
       <ul>
-        {toDos.map((item, index) => <li key={index}>{item}</li>)}
+        {toDos.map((item, index) => <li value={index }onClick={onDelete} key={index}>{item}</li>)}
       </ul>
     </div>
   );
